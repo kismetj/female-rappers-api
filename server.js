@@ -1,6 +1,9 @@
 const express = require('express')
 const app = express()
 const PORT = 8000
+const cors = require ('cors')
+
+app.use(cors())
 
 const rappers = {
     'queen latifah':{
@@ -15,10 +18,28 @@ const rappers = {
         'age':51,
         'birthDate': 'October 11, 1970', 
         'birthName': 'Lana Michele Moorer', 
-        'birthLocation': 'New York City',
+        'birthLocation': 'New York City, US',
         'debutAlbum': 'Lyte as a Rock', 
         'debutRelease': 'May 1988',
     },
+    'lil kim':{
+        'age':47,
+        'birthDate': 'July 11, 1974', 
+        'birthName': 'Kimberly Denise Jones',
+        'nickname': 'Queen Bee', 
+        'birthLocation': 'Brooklyn, NY',
+        'debutAlbum': 'Hard Core', 
+        'debutRelease': 'November 12, 1996',
+    },
+        'missy elliott':{
+        'age':50,
+        'nickname': 'Misdemeanor',
+        'birthDate': 'July 1, 1971', 
+        'birthName': 'Melissa Arnette Elliott', 
+        'birthLocation': 'Portsmouth, Virginia, U.S.',
+        'debutAlbum': 'Supa Dupa Fly', 
+        'debutRelease': 'July 15, 1997',
+},
     'unknown': {
         'age': 0,
         'birthName': 'unknown',
@@ -43,6 +64,7 @@ app.get('/api/:name',(request,response)=>{
     }
 })
 
-app.listen(PORT, ()=>{
+app.listen(process.env.PORT || PORT, ()=>{
     console.log(`The server is now running on port ${PORT}! Betta Go Catch It!`)
 })
+
