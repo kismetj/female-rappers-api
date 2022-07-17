@@ -13,6 +13,9 @@ const rappers = {
     'birthLocation': 'Newark, NJ',
     'debutAlbum': 'All Hail The Queen',
     'debutRelease': 'November 28, 1989',
+    'image': 'https://upload.wikimedia.org/wikipedia/en/thumb/e/ee/QueenLatifahAllHailtheQueen.jpg/220px-QueenLatifahAllHailtheQueen.jpg',
+    'playlist':'https://open.spotify.com/playlist/37i9dQZF1DZ06evO39mt0c?si=6807b97d43464a3d',
+        'Label': 'Tommy Boy'
     }, 
     'mc lyte':{
         'age':51,
@@ -64,7 +67,17 @@ app.get('/api/:name',(request,response)=>{
     }
 })
 
+app.get('/api/:name',(request,response)=>{
+    const rapperName =request.params.name.toLowerCase()
+
+    if( rappers[rapperName] ){
+        response.json(rappers[rapperName])
+    }else{
+        response.json(rappers['unknown'])
+    }
+
+
 app.listen(process.env.PORT || PORT, ()=>{
     console.log(`The server is now running on port ${PORT}! Betta Go Catch It!`)
 })
-
+})
